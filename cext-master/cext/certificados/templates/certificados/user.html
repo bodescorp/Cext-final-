@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+
+
+
+
+    {% block menu %}
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+                    Coordenação de Extensão
+                </a>
+            </div>
+
+            <ul class="nav">
+
+							<li class="active">
+									<a href="{% url 'lista_participantes' %}">
+											<i class="ti-user"></i>
+											<p>Participantes</p>
+									</a>
+							<li class="has child active opened"  align="center"><i class=""></i><a>Cadastro de participante</a></li>
+						</li>
+
+
+							<li>
+									<a href="{% url 'lista_cursos' %}">
+											<i class="ti-ruler-pencil"></i>
+											<p>Cursos</p>
+									</a>
+							</li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Cadastro de Participante</a>
+                </div>
+
+
+            </div>
+        </nav>
+         {% endblock %}
+
+
+
+				
+                        <div class="card">
+                        {% block content %}
+                         <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="content">
+                                <form method="post">
+																{% csrf_token %}
+
+																	<div class="row">
+																			<div class="col-md-8">
+																					<div class="form-group">
+																							<label>Nome Completo</label>
+																							{{ form.nome | add_class:"form-control border-input" }}
+																					</div>
+																			</div>
+
+																	</div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exemplo@email.com">Email</label>
+																								{{ form.email | add_class:"form-control border-input" }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                        <div class="row">
+																					<div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>CPF</label>
+																								{{ form.cpf | add_class:"form-control border-input" }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+																		<div class="row">
+																			<div class="col-md-4">
+																				<div class="form-group">
+																						<label>Telefone</label>
+																						{{ form.telefone | add_class:"form-control border-input" }}
+																				</div>
+																		</div>
+
+
+
+																	<div class="col-md-4">
+																		<div class="form-group">
+																				<label>Matrícula</label>
+																				{{ form.matricula | add_class:"form-control border-input" }}
+																		</div>
+																</div>
+														</div>
+
+														
+
+                                                            <div class="text-center">
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Salvar</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                     </form>
+
+                                </form>
+                            </div>
+
+                            {% endblock %}
+                      
+                      {%block extende%}
+
+  <div class="collapse navbar-collapse off-canvas-sidebar" data-background-color="white" data-active-color="danger"><div class="sidebar-wrapper"><div class="logo">
+    <a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+        Coordenação de Extensão
+    </a>
+            </div><ul class="nav navbar-nav">
+                        <li>
+                        <a href="{% url 'lista_participantes' %}">
+                            <i class="ti-user"></i>
+                            <p>Participantes</p>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="{% url 'lista_cursos' %}">
+                            <i class="ti-ruler-pencil"></i>
+                            <p>Cursos</p>
+                        </a>
+                        <li class="has child active opened" align="right"><i class=""></i><a>Cadastro de curso</a></li>
+                    </li>
+
+            </ul></div></div>
+
+
+
+  {%endblock%}
+
+  

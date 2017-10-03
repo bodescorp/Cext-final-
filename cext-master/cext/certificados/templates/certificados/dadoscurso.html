@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+
+
+
+   {% block menu %}
+ <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+                    Coordenação de Extensão
+                </a>
+            </div>
+
+            <ul class="nav">
+							<li>
+									<a href="{% url 'lista_participantes' %}">
+											<i class="ti-user"></i>
+											<p>Participantes</p>
+									</a>
+							</li>
+
+							<li class="active">
+									<a href="{% url 'lista_cursos' %}">
+											<i class="ti-ruler-pencil"></i>
+											<p>Cursos</p>
+									</a>
+							<li class="has child active opened"  align="center"><i class=""></i><a>Dados do curso</a></li>
+
+
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>  
+                    <a class="navbar-brand" href="#">Cursos</a>
+                </div>
+								<div class="collapse navbar-collapse">
+										<ul class="nav navbar-nav navbar-right">
+
+							<li>
+														<a href="#">
+
+								<input type="text" class=" border-input" placeholder="" value="">
+
+								<button type="submit" class="ti-search"></button>
+							</a></li>
+
+										</ul>
+								</div>
+
+            </div>
+        </nav>
+        {%endblock%}
+
+				
+
+
+
+
+                     {% block content %}
+                      <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                     
+                            
+											<div class="card">
+
+												<div class="content">
+
+												<p>Nome do curso</p>
+												<label>{{object.nome}}</label>
+
+												<p>Data de ínicio</p>
+												<label>{{object.inicio}}</label>
+
+												<p>Data de fim</p>
+												<label>{{object.fim}}</label>
+
+												<p>Carga horrária</p>
+												<label>{{object.carga_horaria}}</label>
+
+												<p>Coordenador</p>
+												<label>{{object.coordenador}}</label>
+
+												<p>Ministrante/Palestrante</p>
+												<label>{{object.ministrante}}</label>
+
+												<p>Cidade</p>
+												<label>{{object.cidade}}</label>
+                     
+                    
+
+<br>
+<br>
+			<hr size="100" width="100%" align="center" noshade>
+
+										<div class="content table-responsive table-full-width">
+												<table class="table table-striped">
+														<thead>
+																<th>Participantes</th>
+															<th></th>
+														</thead>
+														<tbody>
+														{%if Participante %}
+															{%for i in Participante%}
+																<tr>
+																	<td><a href="{% url 'participantes' i.pk %}">{{i.nome}}</a></td>
+
+
+
+
+																	<td>
+																	{{ i.certificado.first.curso.nome }}
+																	{% if not object in i.curso.all %}
+																	 <form method="POST" action="{% url 'inscricao' %}">
+                                      										{% csrf_token %}
+                                      										
+                                      										<input type='hidden' name='{{ form.participante.name }}' value='{{ i.pk }}'/>
+																			<input type='hidden' name='{{ form.curso.name }}' value='{{ object.pk }}'/>
+																		
+																		<a href="\inscrever\{{i.pk}}\{{view.get_object.pk}}" class="btn btn-info btn-fill btn-wd">inscreva-se </a>
+
+																	</form>
+																	{% endif %}
+
+																	</td>
+
+
+
+
+
+																	
+																</tr>
+																{%endfor%}
+														{% else %}
+														{%for i in Certificado%}
+																<tr>
+																	<td><a href="{% url 'participantes' i.participante.pk %}">{{i.participante.nome}}</a></td>
+																	<td>
+																		<a href="{% url 'certificado_gerar' i.pk %}""><button type="submit" class="btn btn-info btn-fill btn-wd" >Gerar Certificado</button></a>
+																	</td>
+																</tr>
+																{%endfor%}
+														{%endif%}
+														</tbody>
+												</table>
+
+										</div>
+
+
+
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+				</div>
+{% endblock %}
+
+
+
+	{%block extende%}
+		
+
+	<div class="collapse navbar-collapse off-canvas-sidebar" data-background-color="white" data-active-color="danger"><div class="sidebar-wrapper"><div class="logo">
+		<a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+				Coordenação de Extensão
+		</a>
+						</div><ul class="nav navbar-nav">
+												<li>
+												<a href="{% url 'lista_participantes' %}">
+														<i class="ti-user"></i>
+														<p>Participantes</p>
+												</a>
+										</li>
+
+										<li class="active">
+												<a href="{% url 'lista_cursos' %}">
+														<i class="ti-ruler-pencil"></i>
+														<p>Cursos</p>
+												</a>
+												<li class="has child active opened" align="right"><i class=""></i><a>Dados do curso</a></li>
+										</li>
+
+						</ul></div></div>
+
+
+
+
+
+
+
+
+
+    {%endblock%}
+

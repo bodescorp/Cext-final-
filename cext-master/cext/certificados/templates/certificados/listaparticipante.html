@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block menu%}
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+                    Coordenação de Extensão
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="{% url 'lista_participantes' %}">
+                        <i class="ti-user"></i>
+                        <p>Participantes</p>
+                    </a>
+                </li>
+
+								<li>
+										<a href="{% url 'lista_cursos' %}">
+												<i class="ti-ruler-pencil"></i>
+												<p>Cursos</p>
+										</a>
+								</li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Participantes</a>
+                </div>
+
+								<div class="collapse navbar-collapse">
+										<ul class="nav navbar-nav navbar-right">
+
+							<li>
+														<a href="#">
+
+								<input type="text" class=" border-input" placeholder="" value="">
+
+								<button type="submit" class="ti-search"></button>
+							</a></li>
+
+										</ul>
+								</div>
+
+            </div>
+        </nav>
+
+{%endblock%}
+
+{%block content%}
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Dados dos Participantes</h4>
+                                        <p class="category" align="right"><a href="{% url 'cadastro-participantes' %}"><button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar participante</button></a></p>
+
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>CPF</th>
+                                        <th>Nome</th>
+                                        <th>email</th>
+                                        <th>matricula</th>
+                                    </thead>
+                                    <tbody>
+                                       <tbody>
+                                 
+                                        
+                                        {% for i in participantes %}
+                                            <tr>
+                                                <td>{{i.cpf}}</td>
+                                                <td><a href="{% url 'participantes' i.pk %}">{{i.nome}}</a></td>
+                                                <td>{{i.email}}</td>
+                                                <td>{{i.matricula}}</td>
+                                            </tr>
+                                        {% endfor %}
+
+                        
+                                                                                
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+{%endblock%}
+
+        
+    {%block extende%}
+
+	<div class="collapse navbar-collapse off-canvas-sidebar" data-background-color="white" data-active-color="danger"><div class="sidebar-wrapper"><div class="logo">
+		<a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+				Coordenação de Extensão
+		</a>
+						</div><ul class="nav navbar-nav">
+												<li class="active">
+												<a href="{% url 'lista_participantes' %}">
+														<i class="ti-user"></i>
+														<p>Participantes</p>
+												</a>
+										</li>
+
+										<li>
+												<a href="{% url 'lista_cursos' %}">
+														<i class="ti-ruler-pencil"></i>
+														<p>Cursos</p>
+												</a>
+										</li>
+
+						</ul></div></div>
+
+
+    {%endblock%}
+   

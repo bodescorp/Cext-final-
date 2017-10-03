@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+{%block menu%}
+
+
+
+        <div class="sidebar-wrapper">
+                <div class="logo">
+                        <img src="assets/img/bodescorp.png">
+        </div>
+
+            <ul class="nav">
+
+                            <li class="active">
+                                    <a>
+                                            <i class="ti-pie-chart"></i>
+                                            <p>Conheça-nos</p>
+                                    </a>
+                            </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                   <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button> 
+                    <a class="navbar-brand" href="#">Bode's Corporation</a>
+                </div>
+
+
+            </div>
+        </nav>
+
+{%endblock%}
+{%block content%}
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                                    <h4>Sobre nós</h4>
+                                    <p>
+                                        Somos uma parceria de alunos e professor que se fundiu
+                                        a partir da necessidade de realização de um estágio para
+                                        conclusão do Curso Técnico em Informática <br> [...] </p>
+<br>
+<br>
+
+                                    <h4 align="right">Desenvolvedores</h4>
+                                    <p align="right">
+                                        <a href="https://www.facebook.com/amanda.pereira.549436">Amanda Albuquerque</a><br>
+                                        <a href="https://www.facebook.com/cassia.abrantesn">Cássia Abrantes</a><br>
+                                        <a href="https://www.facebook.com/glaymar.albuquerque">Glaymar Albuquerque<br>
+                                        <a href="https://www.facebook.com/gustavo.soares.vieira">Gustavo Soares</a>
+                                    </p>
+<br>
+
+                                        <h4>Mais informações</h4>
+                                        <!--<p>
+                                            <i class="ti-facebook"></i> <a href="https://www.facebook.com/glaymar.albuquerque">Glaymar Albuquerque</a> <br>
+                                            <i class="fa fa-espaco"></i><a href="https://www.facebook.com/amanda.pereira.549436">Amanda Albuquerque</a> <br>
+                                            <i class="fa fa-espaco"></i><a href="https://www.facebook.com/cassia.abrantesn">Cássia Abrantes</a> <br>
+                                            <br>
+                                                <i class="fa fa-whatsapp" aria-hidden="true"></i> 991372838<br>
+                                                <i class="fa fa-espaco"> </i> 99000000
+                                            </p> -->
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+
+{%endblock%}
+{%block extende%}
+
+  <div class="collapse navbar-collapse off-canvas-sidebar" data-background-color="white" data-active-color="danger"><div class="sidebar-wrapper"><div class="logo">
+    <a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+        Coordenação de Extensão
+    </a>
+            </div><ul class="nav navbar-nav">
+                        <li>
+                        <a href="{% url 'lista_participantes' %}">
+                            <i class="ti-user"></i>
+                            <p>Participantes</p>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="{% url 'lista_cursos' %}">
+                            <i class="ti-ruler-pencil"></i>
+                            <p>Cursos</p>
+                        </a>
+                        <li class="has child active opened" align="right"><i class=""></i><a>Cadastro de curso</a></li>
+                    </li>
+
+            </ul></div></div>
+
+
+
+  {%endblock%}

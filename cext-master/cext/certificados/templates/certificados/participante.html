@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+
+
+{%block menu%}
+
+<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.ifpb.edu.br/cajazeiras/extensao/coordenacao" class="simple-text">
+                    Coordenação de Extensão
+                </a>
+            </div>
+						<ul class="nav">
+							<li class="active">
+									<a href="{% url 'lista_participantes' %}">
+											<i class="ti-user"></i>
+											<p>Participantes</p>
+									</a>
+								<li class="has child active opened"  align="center"><i class=""></i><a>Dados do participante</a></li>
+							</li>
+
+							<li>
+									<a href="{% url 'lista_cursos' %}">
+											<i class="ti-ruler-pencil"></i>
+											<p>Cursos</p>
+									</a>
+							</li>
+
+            </ul>
+
+    	</div>
+    </div>
+
+    <div class="main-panel">
+			<nav class="navbar navbar-default">
+	            <div class="container-fluid">
+	                <div class="navbar-header">
+										<button type="button" class="navbar-toggle">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar bar1"></span>
+											<span class="icon-bar bar2"></span>
+											<span class="icon-bar bar3"></span>
+									</button>
+											<a class="navbar-brand" href="#">Participante</a>
+										</div>
+
+
+									</div>
+								</nav>
+{%endblock%}
+{%block content%}
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+				<div class="content">
+            		<div class="container-fluid">
+                		<div class="row">
+                   			<div class="col-md-8">
+											<div class="card">
+
+												<div class="content">
+
+													<p>Nome Completo</p>
+													<label>{{ object.nome }}</label>
+
+													<p>Email</p>
+													<label>{{object.email}}</label>
+
+													<p>CPF</p>
+													<label>{{object.cpf}}</label>
+
+													<p>Telefone</p>
+													<label>{{object.telefone}}</label>
+
+													<p>Matrícula</p>
+													<label>{{object.matricula}}</label>
+
+													<div class="content table-responsive table-full-width">
+																	<table class="table table-striped">
+																			<thead>
+																					<th><label>Cursos</label></th>
+																				<th></th>
+																			</thead>
+																			<tbody>
+        <tr>
+				{% for i in object.certificado.all %}
+					<tr>
+						<td>															
+							 <a href="{% url 'dados_curso' i.curso.pk  %}">{{i.curso.nome}}</a>
+							 <br>
+							
+								<td>
+								  {% if i.curso.inicio < view.today %}
+								 	<a href="{% url 'certificado_gerar' i.pk %}">
+									<button type = "submit" class = "btn btn-info btn-fill btn-wd">Gerar Certificado</button>
+									</a>
+								</td>
+							{%endif%}
+						</td>
+					</tr>
+		</tr>
+				{% endfor %}
+																					</tr>
+								             								</tbody>
+																	</table>
+													</div>
+												</div>
+									</div>
+							</div>
+						</div>
+					</div>
+<script language=javascript type="text/javascript">
+now = new Date
+</script>
+
+{%endblock%}
